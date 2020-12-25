@@ -1,0 +1,23 @@
+actor: Tester
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+modules:
+    config:
+        Db:
+            dsn: 'mysql:host=localhost; dbname=mava_test'
+            user: 'root'
+            password: 'illuminati'
+            dump: tests/_data/dump.sql
+            populate: true # dump will be loaded before the test suite is started
+            cleanup: true  # dump will be reloaded after each test
